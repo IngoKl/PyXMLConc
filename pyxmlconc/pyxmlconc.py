@@ -9,6 +9,10 @@ from gui.mainwindow import Ui_MainWindow
 import re
 
 
+def lolz():
+    return "lol"
+
+
 class MainWindow(QMainWindow, Ui_MainWindow):
     """The main GUI window."""
 
@@ -90,7 +94,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 concordance = map(self.strip_tags, concordance)
 
             max_len = len(search_term) + lr_bound * 2
-            concordance = self.trim_string('%s    %s    %s' % (concordance[0].rjust(self.lrbound.value()), concordance[1], concordance[2].ljust(self.lrbound.value())), max_len)
+            concordance = self.trim_string(
+                '%s    %s    %s' %
+                (concordance[0].rjust(
+                    self.lrbound.value()), concordance[1], concordance[2].ljust(
+                    self.lrbound.value())), max_len)
 
             item = QListWidgetItem(concordance)
             item.setTextAlignment(Qt.AlignHCenter)
