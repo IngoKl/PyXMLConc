@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created: Fri Feb 24 05:37:57 2017
+# Created: Fri Feb 24 16:17:33 2017
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,7 +12,7 @@ from PySide import QtCore, QtGui
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(754, 637)
+        MainWindow.resize(1137, 756)
         self.centralWidget = QtGui.QWidget(MainWindow)
         self.centralWidget.setObjectName("centralWidget")
         self.verticalLayout_2 = QtGui.QVBoxLayout(self.centralWidget)
@@ -83,6 +83,10 @@ class Ui_MainWindow(object):
         self.attribute_search.setObjectName("attribute_search")
         self.verticalLayout_3.addWidget(self.attribute_search)
         self.horizontalLayout_2.addLayout(self.verticalLayout_3)
+        self.frequency_list = QtGui.QListWidget(self.centralWidget)
+        self.frequency_list.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.frequency_list.setObjectName("frequency_list")
+        self.horizontalLayout_2.addWidget(self.frequency_list)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
         self.horizontalLayout_4 = QtGui.QHBoxLayout()
         self.horizontalLayout_4.setSpacing(1)
@@ -111,8 +115,14 @@ class Ui_MainWindow(object):
         self.search_bar = QtGui.QLineEdit(self.centralWidget)
         self.search_bar.setObjectName("search_bar")
         self.horizontalLayout.addWidget(self.search_bar)
+        self.working_mode_box = QtGui.QComboBox(self.centralWidget)
+        self.working_mode_box.setFrame(True)
+        self.working_mode_box.setObjectName("working_mode_box")
+        self.working_mode_box.addItem("")
+        self.working_mode_box.addItem("")
+        self.horizontalLayout.addWidget(self.working_mode_box)
         self.lrbound = QtGui.QSpinBox(self.centralWidget)
-        self.lrbound.setProperty("value", 20)
+        self.lrbound.setProperty("value", 4)
         self.lrbound.setObjectName("lrbound")
         self.horizontalLayout.addWidget(self.lrbound)
         self.verticalLayout.addLayout(self.horizontalLayout)
@@ -134,12 +144,15 @@ class Ui_MainWindow(object):
         self.save_button.setText(QtGui.QApplication.translate("MainWindow", "Save", None, QtGui.QApplication.UnicodeUTF8))
         self.concordance_list.setSortingEnabled(True)
         self.results_label.setText(QtGui.QApplication.translate("MainWindow", "0 Results", None, QtGui.QApplication.UnicodeUTF8))
-        self.tags_label.setText(QtGui.QApplication.translate("MainWindow", "Tags", None, QtGui.QApplication.UnicodeUTF8))
+        self.tags_label.setText(QtGui.QApplication.translate("MainWindow", "Available Tags", None, QtGui.QApplication.UnicodeUTF8))
         self.tag_deselect_button.setText(QtGui.QApplication.translate("MainWindow", "Deselect", None, QtGui.QApplication.UnicodeUTF8))
         self.attribute_label.setText(QtGui.QApplication.translate("MainWindow", "Attribute Search (e.g. a1=\"1\";a2=\"2\")", None, QtGui.QApplication.UnicodeUTF8))
+        self.frequency_list.setSortingEnabled(True)
         self.ignore_tags_box.setText(QtGui.QApplication.translate("MainWindow", "Ignore Tags Completely", None, QtGui.QApplication.UnicodeUTF8))
         self.strip_tags_box.setText(QtGui.QApplication.translate("MainWindow", "Strip Tags", None, QtGui.QApplication.UnicodeUTF8))
         self.ignore_case_box.setText(QtGui.QApplication.translate("MainWindow", "Ignore Case", None, QtGui.QApplication.UnicodeUTF8))
         self.allow_overlap_box.setText(QtGui.QApplication.translate("MainWindow", "Allow Overlap", None, QtGui.QApplication.UnicodeUTF8))
         self.search_button.setText(QtGui.QApplication.translate("MainWindow", "Search", None, QtGui.QApplication.UnicodeUTF8))
+        self.working_mode_box.setItemText(0, QtGui.QApplication.translate("MainWindow", "Tokenizer", None, QtGui.QApplication.UnicodeUTF8))
+        self.working_mode_box.setItemText(1, QtGui.QApplication.translate("MainWindow", "re.findall", None, QtGui.QApplication.UnicodeUTF8))
 

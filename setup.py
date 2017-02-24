@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='pyxmlconc',
-      version='0.1',
+      version='0.2',
       description='A very simple concordancer with XML support.',
       url='https://github.com/IngoKl/PyXMLConc',
       author='Ingo Kleiber',
