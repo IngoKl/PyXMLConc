@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created: Fri Feb 24 01:03:53 2017
+# Created: Fri Feb 24 05:37:57 2017
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -31,6 +31,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2 = QtGui.QHBoxLayout()
         self.horizontalLayout_2.setSpacing(6)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.verticalLayout_4 = QtGui.QVBoxLayout()
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.concordance_list = QtGui.QListWidget(self.centralWidget)
         font = QtGui.QFont()
         font.setFamily("Courier Std")
@@ -39,7 +41,16 @@ class Ui_MainWindow(object):
         self.concordance_list.setAlternatingRowColors(True)
         self.concordance_list.setTextElideMode(QtCore.Qt.ElideMiddle)
         self.concordance_list.setObjectName("concordance_list")
-        self.horizontalLayout_2.addWidget(self.concordance_list)
+        self.verticalLayout_4.addWidget(self.concordance_list)
+        self.results_label = QtGui.QLabel(self.centralWidget)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setWeight(75)
+        font.setBold(True)
+        self.results_label.setFont(font)
+        self.results_label.setObjectName("results_label")
+        self.verticalLayout_4.addWidget(self.results_label)
+        self.horizontalLayout_2.addLayout(self.verticalLayout_4)
         self.verticalLayout_3 = QtGui.QVBoxLayout()
         self.verticalLayout_3.setSizeConstraint(QtGui.QLayout.SetFixedSize)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
@@ -88,6 +99,9 @@ class Ui_MainWindow(object):
         self.ignore_case_box = QtGui.QCheckBox(self.centralWidget)
         self.ignore_case_box.setObjectName("ignore_case_box")
         self.horizontalLayout_4.addWidget(self.ignore_case_box)
+        self.allow_overlap_box = QtGui.QCheckBox(self.centralWidget)
+        self.allow_overlap_box.setObjectName("allow_overlap_box")
+        self.horizontalLayout_4.addWidget(self.allow_overlap_box)
         self.verticalLayout.addLayout(self.horizontalLayout_4)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
@@ -119,11 +133,13 @@ class Ui_MainWindow(object):
         self.load_button.setText(QtGui.QApplication.translate("MainWindow", "Load", None, QtGui.QApplication.UnicodeUTF8))
         self.save_button.setText(QtGui.QApplication.translate("MainWindow", "Save", None, QtGui.QApplication.UnicodeUTF8))
         self.concordance_list.setSortingEnabled(True)
+        self.results_label.setText(QtGui.QApplication.translate("MainWindow", "0 Results", None, QtGui.QApplication.UnicodeUTF8))
         self.tags_label.setText(QtGui.QApplication.translate("MainWindow", "Tags", None, QtGui.QApplication.UnicodeUTF8))
         self.tag_deselect_button.setText(QtGui.QApplication.translate("MainWindow", "Deselect", None, QtGui.QApplication.UnicodeUTF8))
         self.attribute_label.setText(QtGui.QApplication.translate("MainWindow", "Attribute Search (e.g. a1=\"1\";a2=\"2\")", None, QtGui.QApplication.UnicodeUTF8))
         self.ignore_tags_box.setText(QtGui.QApplication.translate("MainWindow", "Ignore Tags Completely", None, QtGui.QApplication.UnicodeUTF8))
         self.strip_tags_box.setText(QtGui.QApplication.translate("MainWindow", "Strip Tags", None, QtGui.QApplication.UnicodeUTF8))
         self.ignore_case_box.setText(QtGui.QApplication.translate("MainWindow", "Ignore Case", None, QtGui.QApplication.UnicodeUTF8))
+        self.allow_overlap_box.setText(QtGui.QApplication.translate("MainWindow", "Allow Overlap", None, QtGui.QApplication.UnicodeUTF8))
         self.search_button.setText(QtGui.QApplication.translate("MainWindow", "Search", None, QtGui.QApplication.UnicodeUTF8))
 

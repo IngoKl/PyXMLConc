@@ -6,11 +6,7 @@ from PySide.QtGui import *
 from PySide.QtCore import *
 from bs4 import BeautifulSoup
 from gui.mainwindow import Ui_MainWindow
-import re
-
-
-def lolz():
-    return "lol"
+import regex as re
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -72,9 +68,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     lr_bound, search_term, lr_bound))
 
         if self.ignore_tags_box.checkState():
-            concordances = regexp.findall(self.strip_tags(self.file))
+            file = self.strip_tags(self.file)
         else:
-            concordances = regexp.findall(self.file)
+            file = self.file
+
+        if self.allow_overlap_box.checkState():
+            concordances = regexp.findall(file, overlapped=True)
+        else:
+            concordances = regexp.findall(file)
 
         # Look for Attributes
         if self.attribute_search.text():
@@ -89,6 +90,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
             concordances = concordances_filtered
 
+        # Writing the Concordances
+        self.results_label.setText('%s Results' % len(concordances))
         for concordance in concordances:
             if self.strip_tags_box.checkState():
                 concordance = map(self.strip_tags, concordance)
