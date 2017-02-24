@@ -11,10 +11,12 @@ I also provide compiled/binary versions for Windows:
 * [PyXMLConc-0.1](https://dev.kleiber.me/pyxmlconc/PyXMLConc-0.1.exe) ([SHA 256] e64391aabeaa42a94c4baf1c1d0dd9854f85178683e5f2ffa94d5f24b25c1536) (40mb)
 
 ## Todo
+- [X] Simple frequency table
 - [ ] Unit-Tests
 - [ ] Automatically centering the scrollbar
-- [X] Simple frequency table
 - [ ] Frequency table as an actual table
+- [ ] Allow search from frequency table
+- [ ] Color the actual search term
 
 ## Screenshot
 ![Screenshot](https://cloud.githubusercontent.com/assets/16179317/23309280/516f3366-faae-11e6-9af6-4403f24aac1f.png?raw=true)
