@@ -3,7 +3,7 @@
 PyXMLConc is a very simple concordancer. It is supposed to be used in exploratory analysis of XML-annotated corpora. Its primary feature lies in the automatic detection of XML tags and attributes. The search/concordancing function supports regular expressions.
 
 ## Usage
-After cloning the repository, simply run `python pyxmlconc/pyxmlconc.py`.
+After cloning the repository, simply run `python pyxmlconc/pyxmlconc.py`. Alternatively, you can install PyXMLConc by running `pip install .`. This will make `PyXMLConc` available as a shell command.
 
 The concordancer supports two working modes. The default mode (**Tokenizer**) tokenizes the text and builds the concordances from the individual tokens. The second mode, **re.findall**, uses regular expressions to search the text without previous tokenization. While this mode is somewhat more flexible, the user has to account for potential overlaps resulting in 'missing' concordances.
 

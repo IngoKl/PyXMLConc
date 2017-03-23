@@ -272,7 +272,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def strip_tags(self, string):
         """Stripping all tags and attributes from a string."""
-        soup = BeautifulSoup(string)
+        soup = BeautifulSoup(string, 'html.parser')
         return (soup.get_text())
 
     def sanitize_tags_for_tokenizer(self, match):
@@ -328,8 +328,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             item = QListWidgetItem('%s : %s' % (freq, freqdist[freq]))
             self.frequency_list.addItem(item)
 
-if __name__ == '__main__':
+
+def main():
     app = QApplication(sys.argv)
-    mainWin = MainWindow()
+    main_window = MainWindow()
     ret = app.exec_()
     sys.exit(ret)
+
+
+if __name__ == '__main__':
+    main()
