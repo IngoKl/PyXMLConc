@@ -330,6 +330,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
 def main():
+    """The main function that starts the GUI."""
     app = QApplication(sys.argv)
     main_window = MainWindow()
     ret = app.exec_()

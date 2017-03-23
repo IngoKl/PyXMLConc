@@ -1,28 +1,20 @@
 #!/usr/bin/python
 """Testing for PyXMLConc."""
 # -*- coding: utf-8 -*-
-import unittest
+import sys
 from PySide.QtGui import *
 from PySide.QtCore import *
-import sys
-import os
-sys.path.append(os.path.abspath('../'))
 from pyxmlconc.pyxmlconc import MainWindow
 
+app = QApplication(sys.argv)
+main_window = MainWindow()
 
-class BasicTestCases(unittest.TestCase):
-    """Basic tests."""
 
-    def test_basic_text_manipulation(self):
-        """Basic text manipulation tests."""
-        self.app = QApplication(sys.argv)
-        self.test_object = MainWindow()
+def test_strip_tags():
+    """Test strip_tags."""
+    assert(main_window.strip_tags('<h1 att="True">Test</h1>')) == 'Test'
 
-        self.assertEqual(self.test_object.trim_string(
-                         'Fairly Long String', 10), 'ly Long St')
 
-        self.assertEqual(self.test_object.strip_tags(
-                         '<h1 att="True">Test</h1>'), 'Test')
-
-if __name__ == '__main__':
-    unittest.main()
+def test_trim_string():
+    """Test trim_strings."""
+    assert(main_window.trim_string('Fairly Long String', 10)) == 'ly Long St'
