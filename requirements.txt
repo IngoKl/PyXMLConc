@@ -1,4 +1,4 @@
-nltk==3.2.1
+nltk==3.4.5
 PySide==1.2.4
 beautifulsoup4==4.5.3
 regex==2017.02.08
