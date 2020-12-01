@@ -2,10 +2,11 @@
 """The main module of PyXMLConc."""
 # -*- coding: utf-8 -*-
 import sys
-from PySide.QtGui import *
-from PySide.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtCore import *
+from PySide2.QtWidgets import *
 from bs4 import BeautifulSoup
-from gui.mainwindow import Ui_MainWindow
+from pyxmlconc.gui.mainwindow import Ui_MainWindow
 import regex as re
 from nltk.tokenize import SpaceTokenizer
 from nltk.probability import FreqDist
@@ -95,6 +96,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         concordances = []
 
+        print(concordances)
+
         for i in range(len(tokens)):
             if regexp.match(tokens[i]):
                 boundaries = self.generate_boundaries(lr_bound, tokens, i)
@@ -107,7 +110,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         left_boundary = []
         right_boundary = []
 
-        for i in reversed(xrange(lr_bound)):
+        for i in reversed(range(lr_bound)):
             i += 1
 
             try:
@@ -174,7 +177,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
             for concordance in concordances:
                 if self.strip_tags_box.checkState():
-                    concordance = map(self.strip_tags, concordance)
+                    concordance = list(map(self.strip_tags, concordance))
+                    print(concordance)
 
                 if working_mode == 'Tokenizer':
                     concordance = '%s    %s    %s' % (concordance[0].rjust(
@@ -272,11 +276,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def strip_tags(self, string):
         """Stripping all tags and attributes from a string."""
-        soup = BeautifulSoup(string, 'html.parser')
+        soup = BeautifulSoup(string, 'lxml')
         return (soup.get_text())
 
     def sanitize_tags_for_tokenizer(self, match):
         """Replacing spaces in tags to prevent the tokenizer from splitting."""
+        print(match, match[0].replace(' ', '_'))
         return match[0].replace(' ', '_')
 
     def search(self):
