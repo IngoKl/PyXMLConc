@@ -20,7 +20,6 @@ The concordancer supports two working modes. The default mode (**Tokenizer**) to
 - Frequency table as an actual table
 - Allow search from the frequency table
 - Color the actual search term; split up the concordance into columns
-- Read possible attributes
 - Select search terms from the frequency list
 - Fix issues when there are multiple attributes
 
