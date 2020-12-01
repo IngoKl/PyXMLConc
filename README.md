@@ -13,8 +13,6 @@ Alternatively, you can install PyXMLConc by running `pip install .`. This will m
 
 The concordancer supports two working modes. The default mode (**Tokenizer**) tokenizes the text and builds the concordances from the individual tokens. The second mode, **re.findall**, uses regular expressions to search the text without previous tokenization. While this mode is somewhat more flexible, the user has to account for potential overlaps resulting in 'missing' concordances.
 
-I also provide compiled/binary versions for Windows. These can be found under releases.
-
 ## Todo
 
 - Add additional tests
