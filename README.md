@@ -30,4 +30,4 @@ The concordancer supports two working modes. The default mode (**Tokenizer**) to
 
 ## Updates
 
-    * (2020-12-01) PyXMLConc 0.2 - Upgrade to Qt 5 and PySide2; Add simple frequency tables
+* (2020-12-01) PyXMLConc 0.2 - Upgrade to Qt 5 and PySide2; Add simple frequency tables
