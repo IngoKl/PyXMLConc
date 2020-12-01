@@ -96,8 +96,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         concordances = []
 
-        print(concordances)
-
         for i in range(len(tokens)):
             if regexp.match(tokens[i]):
                 boundaries = self.generate_boundaries(lr_bound, tokens, i)
@@ -165,6 +163,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
             concordances = concordances_filtered
 
+
         # Writing the Concordances
         if len(concordances) > 0:
             self.results_label.setText('%s Results' % len(concordances))
@@ -178,7 +177,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             for concordance in concordances:
                 if self.strip_tags_box.checkState():
                     concordance = list(map(self.strip_tags, concordance))
-                    print(concordance)
 
                 if working_mode == 'Tokenizer':
                     concordance = '%s    %s    %s' % (concordance[0].rjust(
@@ -261,7 +259,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         if len(save_file_name) > 0:
             with open(save_file_name, 'w') as save_file:
-                for i in xrange(self.concordance_list.count()):
+                for i in range(self.concordance_list.count()):
                     save_file.write(''.join(
                                     [str(self.concordance_list.item(i).text()
                                          ), '\n']))
@@ -281,8 +279,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def sanitize_tags_for_tokenizer(self, match):
         """Replacing spaces in tags to prevent the tokenizer from splitting."""
-        print(match, match[0].replace(' ', '_'))
-        return match[0].replace(' ', '_')
+        sanitized = match[0].replace(' ', '_').replace(' <', '<')
+        return sanitized
 
     def search(self):
         """Finding the concordances and enable the save button."""
