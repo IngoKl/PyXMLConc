@@ -51,6 +51,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.concordance_list = QListWidget(self.centralWidget)
         self.concordance_list.setObjectName(u"concordance_list")
+        self.concordance_list.setAutoScroll(False)
         font = QFont()
         font.setFamily(u"Courier Std")
         font.setPointSize(12)

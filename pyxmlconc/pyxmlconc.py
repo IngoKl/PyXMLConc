@@ -78,7 +78,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if ignore_tags:
             tokens = SpaceTokenizer().tokenize(self.strip_tags(file))
         else:
-            file = re.sub(r'<.*?>', self.sanitize_tags_for_tokenizer, file)
+            # Add space between tags to assist tokenization
+            file = re.sub(r'<.*?>', self.sanitize_tags_for_tokenizer, file).replace('><', '> <')
             tokens = SpaceTokenizer().tokenize(file)
 
         if ignore_case:
@@ -97,7 +98,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         concordances = []
 
         for i in range(len(tokens)):
-            if regexp.match(tokens[i]):
+            if regexp.search(tokens[i]):
                 boundaries = self.generate_boundaries(lr_bound, tokens, i)
                 concordances.append((boundaries[0], tokens[i], boundaries[1]))
 
@@ -179,21 +180,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     concordance = list(map(self.strip_tags, concordance))
 
                 if working_mode == 'Tokenizer':
-                    concordance = '%s    %s    %s' % (concordance[0].rjust(
-                        just), concordance[1], concordance[2].ljust(just))
+                    concordance = f'{concordance[0].rjust(just)}|{concordance[1].center(15, " ")}|{concordance[2].ljust(just)}'
                 else:
-                    concordance = self.trim_string('%s    %s    %s' %
-                                                   (concordance[0].rjust(
-                                                    self.lrbound.value()),
-                                                    concordance[1],
-                                                    concordance[2].ljust(
-                                                        self.lrbound.value())),
-                                                   max_len)
+                    concordance = self.trim_string(f'{concordance[0].rjust(self.lrbound.value())}   {concordance[1].center(15, " ")}    {concordance[2].ljust(self.lrbound.value())}', max_len)
 
                 item = QListWidgetItem(concordance)
                 item.setTextAlignment(Qt.AlignHCenter)
                 self.concordance_list.addItem(item)
         else:
+            self.results_label.setText('0 Results')
             item = QListWidgetItem('Nothing found!')
             item.setTextAlignment(Qt.AlignHCenter)
             self.concordance_list.addItem(item)
